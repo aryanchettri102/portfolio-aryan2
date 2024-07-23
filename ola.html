@@ -1,0 +1,1692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ola Website </title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #000000;
+            color: white;
+            padding: 3px 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+      .ola-header{
+          display: block;
+          position: fixed;
+          z-index: 99;
+          width: 100%;
+          top: 0;
+          left: 0;
+          transition: all 0.2s ease;
+        }
+        .second-header{
+            background: #000000;
+            border-radius: 0px;
+            box-shadow: 0px 2px 4px 0px rgb(0 0 0 / 14%);
+            overflow: hidden;
+            text-align: right;
+            z-index: 100;
+            height: 64px;
+            width: 100%;
+        }
+        .width-max{
+            max-width: 1366px;
+            margin: auto;
+        }
+        .but-left{
+            float: left;
+            padding:16px 0px;
+        }
+        .nav-bar{
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .ola-logo{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-right: 40px;
+            margin-left: 16px;
+        }
+        .display{
+            display: flex;
+        }
+        .event-el{
+            text-decoration: none;
+            display: inline-block;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+        .ola-electric{
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 5px 12px;
+        }
+        .event-el{
+            text-decoration: none;
+            display: inline-block;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+        .book-cab{
+            color: white;
+            background: rgba(255, 255, 255, 0.17);
+            padding: 14px 12px;
+            line-height: 16px;
+            margin: 10px;
+        }
+        .event-el{
+            text-decoration: none;
+            display: inline-block;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+        .test-ride{
+            color: #000000;
+            background: #FFFFFF;
+            padding: 14px 12px;
+            line-height: 16px;
+            margin: 10px;
+        }
+        .event-el{
+            text-decoration: none;
+            display: inline-block;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+        .menu-icon {
+            margin-right: 10px;
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            display: inline-block;
+            vertical-align: middle;
+            cursor: pointer;
+            margin-top:15px;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position:absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            padding: 10px;
+            left:-500px;
+            text-align: center;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display:block;
+        }
+
+        .dropdown-button {
+            background-color: #2f2e2e;
+            color: #ffffff;
+            padding: 10px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            text-decoration: none;
+            margin-bottom: 10px;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 8px 0;
+            text-decoration: none;
+            color: #321c1c;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #787575;
+        }
+
+        .dropdown-content button {
+            display: block;
+            padding: 8px 0;
+            background-color: #000000;
+            color: #f9f6f6;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 1s;
+        }
+
+        .dropdown-content button:hover {
+            background-color: #ff0000;
+        }
+        .slidebar{
+            width: 376px;
+            position: fixed;
+            top: 0;
+            background: #FFFFFF;
+            height: 100%;
+            z-index: 12;
+            overflow-x: hidden;
+            opacity: 1;
+            box-shadow: 0 0 2px 1px rgb(0 0 0 / 20%);
+            float: right;
+            right: 0px;
+        }
+        .close-btn{
+            width: 40px;
+            height: 40px;
+            font-size: 32px;
+            line-height: 40px;
+            color: #333;
+            float: right;
+            cursor: pointer;
+            text-align: center;
+            margin: 0px 16px;
+            position: relative;
+        }
+        .cross{
+            position: absolute;
+            color: black;
+            right: 0;
+            top: 4px;
+            width: 24px;
+            cursor: pointer;
+        }
+        .fix{
+            clear: both;
+        }
+        .wrap{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            max-height: 65vh;
+            overflow: scroll;
+        }
+        .menu-option{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        ul{
+            display: block;
+            list-style-type: disc;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            padding-inline-start: 40px;
+        }
+        .li-menu-option{
+            width: 100%;
+            float: left;
+            padding: 15px 0px;
+            color: #4A4A4A;
+            text-decoration: none;
+            font-size: 18px;
+            line-height: 22px;
+            font-weight: 400;
+        }
+        .event-el{
+            text-decoration: none;
+            display: inline-block;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+        .fix-btn{
+            bottom: 0;
+            position: absolute;
+            width: 100%;
+        }
+        .pic-fix{
+            margin: 24px;
+            margin-bottom: 0;
+        }
+        .event-el{
+            text-decoration: none;
+            display: inline-block;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+        .img{
+            height:100%;
+            width:100%;
+        }
+        .pointer{
+            cursor: pointer;
+        }
+        .bottom-footer{
+            display: flex;
+            justify-content: space-between;
+            margin-left: 24px;
+        }
+        .nav-bottom{
+            color: black;
+            opacity: 0.4;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 140%;
+        }
+        .event-el{
+            text-decoration: none;
+            display: inline-block;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+        .bottom-footer{
+            display: flex;
+            justify-content: space-between;
+            margin: 24px;
+        }
+        .event-el{
+            text-decoration: none;
+            display: inline-block;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+        .event-el{
+            text-decoration: none;
+            display: inline-block;
+            vertical-align: middle;
+            cursor: pointer;
+            margin-right: auto;
+
+        }
+        .logo{
+            margin-right: 5px;
+
+        }
+        .img{
+            overflow-clip-margin: content-box;
+            overflow: clip;
+
+        }
+
+        .banner{
+          width: 100%;
+          height: 50vh;
+          background-image: url(https://s3-ap-southeast-1.amazonaws.com/ola-prod-website/hero-banner.webp);
+          background-position: 50%;
+          background-repeat: no-repeat;
+          overflow: hidden;
+          object-fit: cover;
+          position: relative;
+          background-size: cover;
+          margin: 0 auto;
+        }
+        .text{
+          color: #ffffff;
+          max-width: 350px;
+          text-align: left;
+          position: absolute;
+          top: 25vh;
+          left: 16.5%;
+          font-size:48px;
+          font-weight:500;
+          line-height: 48px;
+        }
+        .fw-500{
+          font-weight:500;
+        }
+        .lh-48{
+          line-height: 48px;
+        }
+        .page-container{
+          max-width: 67vw;
+          margin: auto;
+        }
+        .tab-container{
+          display: flex;
+          flex-direction: row;
+          width: 300px;
+          height: 40px;
+          align-items: center;
+          justify-content: space-around;
+          background: white;
+          font-family: Gentona;
+          padding: 0 25px;
+          position: absolute;
+          top:55vh;
+          left:30vh;
+          font-size:15px;
+        }
+        .booking{
+          --ola-primary-color: #424a54;
+          --ola-highlight-color: #cddc39;
+          --ola-back-color: #f5f5f5;
+          --ola-front-color: #fff;
+          --ola-label-color: #4d4d4d;
+          --ola-text-color: #000;
+          --ola-widget-color: #F2F4F6;
+          color: var(--ola-text-color);
+          display: block;
+          width: 100%;
+          --mobile-cont: {max-width:550px;margin:0;display:block;left:0;} @apply(--mobile-cont);
+        }
+        .main-container{
+          padding: 24px 24px 24px 16px;
+          align-items: center;
+          background: var(--ola-widget-color);
+          position: relative;
+          top:-93px;
+          left:-78px;
+        }
+        .sub-container{
+          display: flex;
+        }
+        
+
+        .current-location {
+          position: relative;
+          width: 100%;
+          background-color: #fff;
+          padding: 12px 62px 12px 48px;
+          font-family: 'Gentona';
+          font-style: normal;
+          box-sizing: border-box;
+          margin: 0 16px;
+          border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+        .location{
+          display: flex;
+          position: relative;
+          align-items: center;
+          justify-content: center;
+          height: 30px;
+          top:-142px;
+          right:10px;
+        }
+        .value{
+          border: none;
+          color: #000;
+          font-size: 16px;
+          line-height: 27px;
+          width:50%;
+          margin-top: -2px;
+          height: 22px;
+          margin-bottom: 0;
+        }
+        .text-1{
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+        }
+        .location-icon{
+          position: absolute;
+          content: '';
+          top:150px;
+          transform: translateY(-50%);
+          right:-20px;
+          cursor: pointer;
+        }
+        .suggestion-list{
+          display:none;
+          position: absolute;
+          top: 29px;
+          width: 442px;
+          max-height: 292px;
+          left: -48px;
+          padding: 0;
+          box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.24), 0px 8px 16px rgba(0, 0, 0, 0.12);
+          background-color: #fff;
+          overflow-y: scroll;
+          z-index: 4;
+        }
+        .destination-input{
+          position: relative;
+          width: 100%;
+          background-color: #fff;
+          padding: 12px 62px 12px 48px;
+          font-family: 'Gentona';
+          font-style: normal;
+          box-sizing: border-box;
+          margin: 0 16px;
+          border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+        .destination{
+          display: flex;
+          position: relative;
+          align-items: center;
+          justify-content: center;
+          height: 30px;
+        }
+        .value{
+          border: none;
+          color: #000;
+          font-size: 16px;
+          line-height: 27px;
+          width: 100%;
+          margin-top: -2px;
+          height: 32px;
+          margin-bottom: 0;
+        }
+        .text-2{
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+        }
+        .tab_items ul{
+            display: flex;
+            list-style: none;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 400px;
+            position: absolute;
+            left: 280px;
+            top: 260px;
+            gap: 25px;
+            background-color: white;
+            height: 40px;
+            width: 220px;
+            padding: 12px 20px;
+        }
+        .tab_items ul a{
+            color: rgb(81, 81, 81);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .tab_items ul a:hover{
+            color: black;
+            font-size: 13px;
+            transition: 0.2s step-end;
+            border-bottom: 5px solid black;
+            padding-bottom: 12px;
+        }
+        .tab_container{
+            position: absolute;
+            left: 280px;
+            top: auto;
+            background-color: rgb(237, 237, 237);
+            width: 860px;
+            height: 100px;
+            margin-top: -30px;
+            
+        }
+        .daily{
+            display: flex;
+            flex-direction: row;
+            width: 304px;
+            height: 40px;
+            gap:15px;
+            align-items: center;
+            justify-content: space-around;
+            background: white;
+            font-family: Gentona;
+            padding: 0 25px;
+            margin-top: 30px;
+            margin-left: 70px;
+        }
+        .daily_crnt_lct{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 270px;
+            height: 50px;
+            gap:5px;
+            margin: 0 auto;
+            padding: 12px 14px;
+            border: 1px solid rgb(167, 167, 167);
+            background-color: white;
+        }
+        .daily input{
+            border: none;
+            border-style: hidden;
+            height: 30px;
+            background-color: rgb(255, 255, 255);
+            color: black;
+            width: 17   0px;
+        }
+        .daily_entr_dest{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 270px;
+            height: 50px;
+            margin: 0 auto;
+            padding: 12px 14px;
+            border: 1px solid rgb(167, 167, 167);
+            background-color: white;
+        }
+        .src_ola_cab{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 270px;
+            height: 50px;
+            padding: 12px 20px;
+            border: 1px solid rgb(167, 167, 167);
+            background-color: white;
+            cursor: pointer;
+            margin-left:510px;
+            margin-top: -60px;
+
+        }
+
+        .bnr_1{
+            max-width: 65%;
+            margin: 0 auto;
+            margin-top: 50px;
+            margin-bottom: -50px;
+        }
+        .bnr_1 img{
+            width: 100%;
+            margin-left: 15px;
+        }
+        .line_1{
+            display: flex;
+            text-align: center;
+            justify-content: center;
+        }
+        .first-fold-text-push{
+            max-width: 700px;
+            margin: 104px auto 0;
+        }
+        .line_1 h1{
+            font-size: 45px;
+        }
+
+
+        .sec_2{
+            width: 100%;
+            height: 230px;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            margin-bottom: 100px;
+        }
+        .card_1{
+            display: flex;
+            width: 230px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            text-align: center;
+        }
+        .card_1 img{
+            width: 120px;
+        }
+        .card_1 h1{
+            font-size: 40px;
+            margin-bottom: 10px;
+            color: black;
+            font-weight: 700;
+        }
+        .card_1 h3{
+            font-size: 30px;
+            margin-bottom: 13px;
+            color: rgb(52, 52, 52);
+            font-weight: 500;
+        }
+        .card_1 p{
+            font-size: 15px;
+            margin-bottom: 10px;
+            color: #636363;
+            line-height: 23px;
+        }
+        .sec_6{
+            width: 100%;
+            height: 1450px;
+        }
+        .sec_6_container{
+            width: 70%;
+            height: 1300px;
+            margin: 0px auto;
+        }
+        .sec_6_1{
+            width: 100%;
+            height: 600px;
+        }
+        .sec_6_1 h1{
+            font-size: 45px;
+            font-weight: 600px;
+            text-shadow: 1.5px 1.5px 0px rgb(124, 124, 124);
+            padding-top: 80px;
+            margin-bottom: 40px;
+        }
+        .sec_6_1_1{
+            margin-top: 90px;
+            width: 100%;
+            height: 300px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .sec_6_1_1_a{
+            width: 330px;
+            height: 400px;
+        }
+        .sec_6_1_1_a img{
+            width: 330px;
+        }
+        .sec_6_1_1_a h3{
+            margin-top: 30px;
+            font-size: 20px;
+        }
+        .sec_6_1_1_a p{
+            margin-top: 15px;
+            font-size: 18px;
+            line-height: 25px;
+            color: #636363;
+        }
+        .sec_6_2{
+            width: 100%;
+            height: 700px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 50px;
+            gap: 50px;
+        }
+        .sec_6_2 video{
+            width: 500px;
+        }
+        .sec_6_2_b{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 25px;
+        }
+        .sec_6_2_b h1{
+            font-size: 42px;
+            font-weight: 600px;
+            text-shadow: 1.5px 1.5px 0px rgb(124, 124, 124);
+            line-height: 55px;
+        }
+        .sec_6_2_b h3{
+            font-size: 20px;
+            margin-left: 35px;
+        }
+        .sec_6_2_b p{
+            margin-top: -15px;
+            margin-left: 35px;
+            width: 500px;
+            font-size: 18px;
+            line-height: 25px;
+            color: #636363;
+        }
+
+
+        .sec_7{
+            width: 100%;
+            height: 980px;
+            background-color: rgb(241,246,233) ;
+        }
+        .sec_7_container{
+            margin: 0px auto;
+            max-width: 70%;
+            height: 560px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .sec_7_a{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+        .sec_7_a h1{
+            font-size: 45px;
+            width: 450px;
+            margin-top: 100px;
+            text-shadow: 1.5px 1.5px 0px rgb(124, 124, 124) ;
+        }
+        .sec_7_a1{
+            margin-top: 50px;
+            width: 100%;
+            height: 320px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+
+        }
+        .sec_7_a1 .sec_7_a1_a img{
+            width: 540px;
+        }
+        .sec_7_a1_b{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 110px;
+        }
+        .sec_7_a1_b1{
+            max-width: 50%px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .sec_7_a1_b1_a{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .sec_7_a1_b1_a .p1{
+            font-size: 22px;
+            font-weight: 100px;
+        }
+        .sec_7_a1_b1_a .p2{
+            font-size: 14px;
+            font-weight: 100px;
+            color: rgb(22,170,81);
+            background-color: rgb(218,238,217);
+            padding: 6px 4px;
+        }
+        .sec_7_a1_b1 h2{
+            max-width: 100%;
+        }
+        .sec_7_a1_b2{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .sec_7_a1_b2 .b21{
+            margin-right: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .sec_7_a1_b2 .b21 img{
+            width: 60px;
+        }
+        .sec_7_a1_b2 .b21 p{
+            font-size: 14px;
+        }
+        .sec_7_b{
+            margin-top: 100px;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+            width: 100%;
+            gap: 40px;
+            margin-bottom: 100px;
+        }
+        .sec_7_b_b1{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 40px;
+        }
+        .sec_7_b_b1 p{
+            font-size: 23px;
+            font-weight: 100;
+            margin-bottom: -25px;
+        }
+        .sec_7_b_b1 h3{
+            width: 300px;
+            line-height: 32px;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .sec_7_b_b1 h2{
+            font-size: 20px;
+            font-weight: 600;
+            color: rgb(22,170,81);
+        }
+        .sec_7_b_b2{
+            padding: 5px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;   
+        }
+        .sec_7_b_b2 img{
+            width: 180px;
+        }
+        .much_more{
+            font-size: 14px;
+            margin-left: 970px;
+            margin-top: -85px;
+            color: rgb(72,73,69);
+        }
+
+
+        .sec_8{
+            margin-top: 100px;
+            width: 100%;
+            height: 850px;
+            background-color: white ;
+        }
+        .sec_8_container{
+            margin: 0px auto;
+            max-width: 70%;
+            height: 700px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+        .sec_8_a{
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        .sec_8_a_left{
+            width: 55%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 25px;
+        }
+        .sec_8_a_left h1{
+            font-size: 45px;
+            text-shadow: 1.5px 1.5px 0px rgb(158, 158, 158) ;
+        }
+        .sec_8_a_left p{
+            font-size: 18px;
+            line-height: 25px;
+            color: rgb(92,92,92);
+        }
+        .sec_8_a_right{
+            width: 49%;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .sec_8_a_right_element{
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 5px;
+            margin-right: 70px;
+        }
+        .sec_8_a_right_element h3{
+            font-size: 20px;
+        }
+        .sec_8_a_right_element p{
+            font-size: 14px;
+            color: rgb(113,112,116);
+        }
+        .sec_8_b{
+            margin-top: 25px;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .sec_8_b_a{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 20px
+        }
+        .sec_8_b_b{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+        .sec_8_b_a img{
+            width: 515px;
+        }
+        .sec_8_b_b img{
+            width: 510px;
+        }
+        .sec_8_c h2{
+            margin-top: 40px;
+            font-size: 20px;
+            color: rgb(22,170,81);
+        }
+
+
+        .sec_9{
+            margin-top: 50px;
+            width: 100%;
+            height: 600px;
+            background-color: rgb(242,244,240) ;
+        }
+        .sec_9_container{
+            margin: 0px auto;
+            max-width: 70%;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+        .sec_9_container_a h1{
+            margin-top: 100px;
+            font-size: 45px;
+            text-shadow: 1.5px 1.5px 0px rgb(158, 158, 158) ;
+        }
+        .sec_9_container_b{
+            margin-top: 60px;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+        .sec_9_container_b_elements{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 15px;
+            cursor: pointer;
+        }
+        .sec_9_container_b_elements img{
+            width: 245px;
+        }
+        .sec_9_container_b_elements h2{
+            width: 245px;
+            font-size: 20px;
+        }
+        .sec_9_container_b_elements h4{
+            color: rgb(22,170,81);
+        }
+
+
+        .sec_10{
+            margin-top: 50px;
+            width: 100%;
+            height: 500px;
+            background-color: white;
+        }
+        .sec_10_container{
+            margin: 0px auto;
+            max-width: 70%;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 40px;
+        }
+        .sec_10_container_a h1{
+            font-size: 45px;
+            width: 55%;
+        }
+        .sec_10_container_b{
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .sec_10_container_elements{
+            padding: 30px;
+            width: 350px;
+            background-color: rgb(241,244,251);
+            height: 280px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .sec_10_container_elements img{
+            width: 80px;
+            margin-bottom: 35px;
+        }
+        .sec_10_container_elements h3{
+            font-size: 22px;
+            margin-bottom: -20px;
+        }
+        .sec_10_container_elements p{
+            width: 250px;
+            color: #565656;
+        }
+
+        .footer_sec_1{
+            width: 100%;
+            height: 300px;
+            background-color: rgb(242,244,246);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+        .footer_sec_1_container{
+            width: 70%;
+            margin: 0px auto;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+        .footer_sec_1_a{
+            width: 100%;
+            margin-top: 70px;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        .footer_sec_1_a_c1{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        .footer_sec_1_a_c1 .social_media_links{
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 40px;
+        }
+        .footer_sec_1_a_c1 .social_media_links .fa-instagram{
+            color: black;
+        }
+        .footer_sec_1_a_c1 .social_media_links .fa-instagram:hover{
+            color: #ff00ee;
+            transition: 0.1s ease;
+            font-size: 24px;
+        }
+        .footer_sec_1_a_c1 .social_media_links .fa-youtube{
+            color: black;
+        }
+        .footer_sec_1_a_c1 .social_media_links .fa-youtube:hover{
+            color: #f60000;
+            transition: 0.1s ease;
+            font-size: 24px;
+        }
+        .footer_sec_1_a_c1 .social_media_links .fa-twitter{
+            color: black;
+        }
+        .footer_sec_1_a_c1 .social_media_links .fa-twitter:hover{
+            color: #1787ff;
+            transition: 0.1s ease;
+            font-size: 24px;
+        }
+        .footer_sec_1_a_c2{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 15px;
+        }
+        .footer_sec_1_a_c2 a{
+            text-decoration: none;
+            color: black;
+            font-size: 14px;
+        }
+        .footer_sec_1_a_c3{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 15px;
+        }
+        .footer_sec_1_a_c3 a{
+            text-decoration: none;
+            color: black;
+            font-size: 14px;
+        }
+        .footer_sec_1_a_c4{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 15px;
+        }
+        .footer_sec_1_a_c4 a{
+            text-decoration: none;
+            color: black;
+            font-size: 14px;
+        }
+        .footer_sec_1_a_c5{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 15px;
+        }
+        .footer_sec_1_a_c5 h5{
+            color: black;
+            font-size: 15px;
+            font-style: italic;
+            padding: 2px;
+        }
+        .footer_sec_1_a_c5 input{
+            color: rgb(79, 79, 79);
+            font-size: 17px;
+            padding: 20px;
+            width: 300px;
+            border: 1px solid rgb(212, 212, 212);
+        }
+        .footer_sec_1_a_c5 h3{
+            color: white;
+            background-color: black;
+            font-size: 15px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: -3px 3px rgb(22,170,81);
+            cursor: pointer;
+        }
+        .button_subscribe{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .button_subscribe .fa-chevron-up{
+            margin-left: -30px;
+            color: white;
+            transform: rotate(90deg);
+        }
+        .button_subscribe .fa-chevron-up:hover{
+            cursor: pointer;
+            margin-left: -28px;
+            transition: 0.3s ease;
+            font-size: 15px;
+            color: rgb(22,170,81);;
+        }
+
+
+        .copyright{
+            font-size: 12px;
+            text-align: center;
+        }
+        .copyright:hover{
+            color: rgb(22,170,81);
+            transition: 0.2s ease-in-out;
+        }
+        .footer_sec_2{
+            width: 100%;
+            height: 50px;
+            background-color: rgb(242,244,246);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .footer_sec_2_container{
+            width: 70%;
+            margin: 0px auto;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .footer_sec_2_a p{
+            width: 100%;
+            display: flex;
+            font-size: 11px;
+            color: rgb(195,196,198);
+        }
+        .footer_sec_2_b ul{
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            font-size: 13px;
+            list-style: none;
+        }
+        .footer_sec_2_b a{
+            color: rgb(195,196,198);
+        }
+        .footer_sec_2_b ul li select{
+            cursor: pointer;
+            text-decoration: none;
+            border: none;
+            border-style: hidden;
+            color: black;
+            background-color: rgb(242,244,246);
+        }
+        .footer_sec_2_b ul li select:hover{
+            color: rgb(22,170,81);
+            transition: 0.2s ease;
+        }
+        .footer_sec_2_b ul li option{
+            text-decoration: none;
+            border: none;
+            border-style: hidden;
+            color: white;
+            background-color: rgb(22,170,81);
+        }
+        footer .hr{
+            color: rgb(223, 223, 223);
+        }
+
+
+        
+    </style>
+</head>
+<body>
+
+  <header class="ola-header">
+    <div id="second-header" class="second-header">
+        <div class="width-max">
+            <div class="but-left">
+                <div class="nav-bar">
+                    <div class="ola-logo">
+                        <div class="display">
+                            <a href class="event-el" event-name="header-ola-logo">
+                                <img src="https://s3-ap-southeast-1.amazonaws.com/ola-prod-website/ola-white-logo.svg">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <a id="header-ola-electric" event-name="header-ola-electric" class="ola-electric event-el" href="#" translation-key="ola-electric">ola electric</a>
+                    </div>
+                </div>
+            </div>
+                <div>
+                <a id="book-button" event-name="book-button" class="book-cab event-el" href="#" translation-key="book_ola_cab">Book an Ola Cab</a>
+                <a id="s1-test-ride" event-name="s1-test-ride" class="test-ride event-el" href="#" translation-key="s1-test-ride">Free S1 Test Ride</a>
+    <div class="dropdown">
+      <div class="dropdown-button menu-icon">&#9776;</div>
+      <div class="dropdown-content">
+        <div id="slidebar" class="slidebar nav" styles="display:block;">
+          <div class="close-btn cross">
+              <img src="https://s3-ap-southeast-1.amazonaws.com/ola-prod-website/close.svg">
+          </div>
+          <div class="fix"></div>
+          <div class="wrap">
+              <ul class="menu-option">
+                  <li>
+                      <a class="li-menu-option event-el" href="#">Book An Ola</a>
+                  </li>
+                  <li>
+                      <a class="li-menu-option event-el" href="#">Drive With Ola</a>
+                  </li>
+                  <li>
+                      <a class="li-menu-option event-el" href="#">Ola S1</a>
+                  </li>
+                  <li>
+                      <a class="li-menu-option event-el" href="#">Ola Electric</a>
+                  </li>
+                  <li>
+                      <a class="li-menu-option event-el" href="#">Ola FutureFactory</a>
+                  </li>
+                  <li>
+                      <a class="li-menu-option event-el" href="#">Ola Corporate</a>
+                  </li>
+                  <li>
+                      <a class="li-menu-option event-el" href="#">Ola Foundation</a>
+                  </li>
+                  <li>
+                      <a class="li-menu-option event-el" href="#">Support</a>
+                  </li>
+              </ul>
+          </div>
+          <div class="fix-btn">
+              <a class="pic-fix event-el" onclick="window.open()">
+                  <img src="https://s3-ap-southeast-1.amazonaws.com/ola-prod-website/pink-banner-mob.png" class="pointer" height="100%" width="100%">
+              </a>
+          <div class="bottom-footer">
+              <a href="#" class="nav-bottom event-el">Careers</a>
+              <a href="#" class="nav-bottom event-el">Notice</a>
+              <a href="#" class="nav-bottom event-el">Privacy</a>
+              <a href="#" class="nav-bottom event-el">T&C</a>
+          </div>
+        <div class="bottom-footer">
+
+                <a href="#" class="event-el">
+                    <img src="https://s3-ap-southeast-1.amazonaws.com/ola-prod-website/OLA-black.svg">
+                </a>
+        </div>
+            <div>
+                <a href="#" target="blank" class="event-el">
+                    <img src="https://s3-ap-southeast-1.amazonaws.com/ola-prod-website/instagram-icon.svg" class="logo">
+                </a>
+                
+                <a href="#" target="blank" class="event-el">
+                    <img src="https://s3-ap-southeast-1.amazonaws.com/ola-prod-website/youtube-icon.svg" class="logo">
+                </a>
+                
+                <a href="#" target="blank" class="event-el">
+                    <img src="https://s3-ap-southeast-1.amazonaws.com/ola-prod-website/twitter-icon.svg" class="logo">
+                </a>
+            </div>
+
+    
+          </div>
+        </div>
+      </div>
+    </div>
+</header>
+    <div class="banner"></div>
+    <div class="text"> Moving People, and the world</div>
+  </div>
+    <div class="tab_items">
+      <ul>
+          <li><a href="#daily">Daily</a></li>
+          <li><a href="#rental">Rental</a></li>
+          <li><a href="#outstation">Outstation</a></li>
+      </ul>
+    </div>
+    <div class="tab_container">
+      <div class="daily">
+          <div class="daily_crnt_lct">
+              <div>
+                  <p>🟢</p>
+              </div>
+              <div>
+                  <input type="text" name="" id="" placeholder="Current Location">
+              </div>
+                  <p>🔍</p>
+          </div>
+          <div class="daily_entr_dest">
+              <div>
+                  <p>🟠</p>
+              </div>
+              <div>
+                  <input type="text" name="" id="" placeholder="Enter Destination">
+              </div>
+          </div>
+      </div>
+      <div class="src_ola_cab">
+              <p>SEARCH OLA CABS</p>
+              <p>✔</p>
+      </div>
+  </div>
+
+<main>
+    <section class="bnr_1">
+      <img src="#" alt="">
+    </section>
+  <section class="line_1 first-fold-text-push">
+      <h1>Global mobility ecosystem driving</br> communities forward</h1>
+  </section>
+
+  <section class="sec_2">
+      <div class="card_1">
+          <img src="./Assets/1.png" alt="">
+          <h1>250+</h1>
+          <h3>Cities covered</h3>
+          <p>Across India, Australia, New Zealand and the UK</p>
+      </div>
+      <div class="card_1">
+          <img src="./Assets/2.png" alt="">
+          <h1>55 Cr+</h1>
+          <h3>Yearly rides</h3>
+          <p>Booked by our customers every year</p>
+      </div>
+      <div class="card_1">
+          <img src="./Assets/3.png" alt="">
+          <h1>12 Cr+</h1>
+          <h3>Kilometers on S1</h3>
+          <p>Distance covered on Ola S1 scooters within a year of launch</p>
+      </div>
+  </section>
+
+  <section class="sec_6">
+      <div class="sec_6_container">
+          <div class="sec_6_1">
+              <h1>There's an Ola ride for everyone</h1>
+              <div class="sec_6_1_1">
+                  <div class="sec_6_1_1_a">
+                      <img src="https://s3-ap-southeast-1.amazonaws.com/ola-prod-website/ride-budget.svg" alt="">
+                      <h3>For any budget</h3>
+                      <p>From <strong>Bikes</strong> and <strong>Autos</strong> to <strong>Prime Sedans</strong> and <strong>Prime SUVs</strong>, you will find a ride in your budget at your convenience any time.</p>
+                  </div>
+                  <div class="sec_6_1_1_a">
+                      <img src="https://s3-ap-southeast-1.amazonaws.com/ola-prod-website/ride-distance.svg" alt="">
+                      <h3>For any distance</h3>
+                      <p>Book rides within the city with <strong>Daily</strong>, or take a trip to your favourite</br> destinations outside the city with <strong>Outstation</strong>.</p>
+                  </div>
+                  <div class="sec_6_1_1_a">
+                      <img src="https://s3-ap-southeast-1.amazonaws.com/ola-prod-website/ride-duration.svg" alt="">
+                      <h3>For any duration</h3>
+                      <p>Easily plan a day out without having to worry about conveyance with an</br> hour-based package from <strong>Rental</strong>.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="sec_6_2">
+              <video loop autoplay muted src="https://s3-ap-southeast-1.amazonaws.com/ola-prod-website/for-drivers.mp4"></video>
+              <div class="sec_6_2_b">
+                  <h1>Making innovations</br> since 2011</h1>
+                  <h3>For Riders</h3>
+                  <p>We constantly experiment to come up with</br> industry-first features for our riders that eventually</br> become a norm.</p>
+                  <h3>For Drivers</h3>
+                  <p>Our drivers get real time stats to help optimize their</br> rides better and earn more, straight from the app.</p>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <section class="sec_7">
+      <div class="sec_7_container">
+          <div class="sec_7_a">
+              <h1>Experience the smarter way to pay</h1>
+              <div class="sec_7_a1">
+                  <div class="sec_7_a1_a">
+                      <img src="https://s3-ap-southeast-1.amazonaws.com/ola-prod-website/insurance-shop-img.png" alt="">
+                  </div>
+                  <div class="sec_7_a1_b">
+                      <div class="sec_7_a1_b1">
+                          <div class="sec_7_a1_b1_a">
+                              <p class="p1">Postpaid +</p>
+                              <p class="p2">Trusted by 40 lakh+ users</p>
+                          </div>
+                          <h2>Buy now, pay later for all spends</br> once a month</h2>
+                      </div>
+                      <div class="sec_7_a1_b2">
+                          <div class="b21">
+                              <img src="https://s3-ap-southeast-1.amazonaws.com/ola-prod-website/insurance-1.svg" alt="">
+                              <p>Buy now, pay after 30 days</p>
+                          </div>
+                          <div class="b21">
+                              <img src="https://s3-ap-southeast-1.amazonaws.com/ola-prod-website/insurance-3.svg" alt="">
+                              <p>Shop across 20,000 apps</p>
+                          </div>
+                          <div class="b21">
+                              <img src="https://s3-ap-southeast-1.amazonaws.com/ola-prod-website/insurance-2.svg" alt="">
+                              <p>Credit limit upto ₹100,000</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="sec_7_b">
+              <div class="sec_7_b_b1">
+                  <p>Insurance</p>
+                  <h3>Effective insurances for all your risks</h3>
+                  <h2>Explore more on the Ola app</h2>
+              </div>
+              <div class="sec_7_b_b2">
+                  <img src="./Assets/sec_7_b_b2_1.JPG" alt="">
+                  <img src="./Assets/sec_7_b_b2_2.JPG" alt="">
+                  <img src="./Assets/sec_7_b_b2_3.JPG" alt="">
+              </div>
+          </div>
+          <p class="much_more">+ much more</p>
+      </div>
+  </section>
+  <section class="sec_8">
+      <div class="sec_8_container">
+          <div class="sec_8_a">
+              <div class="sec_8_a_left">
+                  <h1>Making a difference</h1>
+                  <p>Ola Foundation, the social welfare arm of Ola, is an outcome of a belief based on real interactions, research, and extensive study on the far-reaching impact of enabling and equipping people.</p>
+              </div>
+              <div class="sec_8_a_right">
+                  <div class="sec_8_a_right_element">
+                      <h3>1 Lakh+</h3>
+                      <p>Families impacted in FY 2020-21</p>
+                  </div>
+                  <div class="sec_8_a_right_element">
+                      <h3>93 Lakh+</h3>
+                      <p>Meals enabled across India in FY 2020-21</p>
+                  </div>
+              </div>
+          </div>
+          <div class="sec_8_b">
+              <div class="sec_8_b_a">
+                  <img src="https://s3-ap-southeast-1.amazonaws.com/ola-prod-website/womens.png" alt="">
+                  <img src="https://s3-ap-southeast-1.amazonaws.com/ola-prod-website/donating.png" alt="">
+              </div>
+              <div class="sec_8_b_b">
+                  <img src="https://s3-ap-southeast-1.amazonaws.com/ola-prod-website/mother-son.png" alt="">
+              </div>
+          </div>
+          <div class="sec_8_c">
+              <h2>More about Ola Foundation</h2>
+          </div>
+      </div>
+  </section>
+  <section class="sec_9">
+      <div class="sec_9_container">
+          <div class="sec_9_container_a">
+              <h1>Recent from our blogs</h1>
+          </div>
+          <div class="sec_9_container_b">
+              <div class="sec_9_container_b_elements">
+                      <img src="https://s3-ap-southeast-1.amazonaws.com/ola-prod-website/pli-agreement.png" alt="">
+                      <h2>Ola signs PLI agreement</h2>
+                      <h4>Know more</h4>
+              </div>
+              <div class="sec_9_container_b_elements">
+                  <img src="https://s3-ap-southeast-1.amazonaws.com/ola-prod-website/ola-to-invest.png" alt="">
+                  <h2>Ola to invest $500 million</h2>
+                  <h4>Know more</h4>
+              </div>
+              <div class="sec_9_container_b_elements">
+                  <img src="https://s3-ap-southeast-1.amazonaws.com/ola-prod-website/indigenous-cell.png" alt="">
+                  <h2>India's first indigenous cell</h2>
+                  <h4>Know more</h4>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <section class="sec_10">
+      <div class="sec_10_container">
+          <div class="sec_10_container_a">
+              <h1>Download our apps to get the best experience</h1>
+          </div>
+          <div class="sec_10_container_b">
+              <div class="sec_10_container_elements">
+                  <img src="./Assets/sec_10_img_a.JPG" alt="">
+                  <h3>Ola</h3>
+                  <p>Book cabs, buy insurance, access Ola Money and much more</p>
+              </div>
+              <div class="sec_10_container_elements">
+                  <img src="./Assets/sec_10_img_a.JPG" alt="">
+                  <h3>Ola Driver</h3>
+                  <p>Register as a driver to take rides, see your earnings and incentives</p>
+              </div>
+          </div>
+      </div>
+  </section>
+</main>
+<footer>
+  <section class="footer_sec_1">
+      <div class="footer_sec_1_container">
+          <div class="footer_sec_1_a">
+              <div class="footer_sec_1_a_c1">
+                  <img src="https://s3-ap-southeast-1.amazonaws.com/ola-prod-website/OLA.svg" alt="">
+                  <div class="social_media_links">
+                      <a href="#"><i class="fa-brands fa-instagram fa-xl"></i></a>
+                      <a href="#"><i class="fa-brands fa-youtube fa-xl"></i></a>
+                      <a href="#"><i class="fa-brands fa-twitter fa-xl"></i></a>
+                  </div>
+              </div>
+                  <div class="footer_sec_1_a_c2">
+                      <a href="">Book a cab</a>
+                      <a href="">Drive with us</a>
+                      <a href="">Outstation</a>
+                      <a href="">Rental</a>
+                      <a href="">Ola Money</a>
+                      <a href="">Corporate</a>
+                  </div>
+                  <div class="footer_sec_1_a_c3">
+                      <a href="">About Us</a>
+                      <a href="">Contact Us</a>
+                      <a href="">Support</a>
+                      <a href="">Careers</a>
+                      <a href="">Media Centre</a>
+                  </div>
+                  <div class="footer_sec_1_a_c4">
+                      <a href="">Ola S1</a>
+                      <a href="">Futurefactory</a>
+                      <a href="">Electric</a>
+                  </div>
+                  <div class="footer_sec_1_a_c5">
+                      <h5>Stay upto date</h5>
+                      <input type="email" placeholder="Enter your mail">
+                          <div class="button_subscribe">
+                              <h3>SUBSCRIBE TO <span style="color: rgb(22,170,81);">NEWSLETTER</span></h3>
+                              <i class="fa-solid fa-chevron-up"></i>
+                          </div>
+                  </div>
+          </div>
+      </div>
+  </section>
+  <div class="hr">
+      <hr>
+  </div>
+  <section class="footer_sec_2">
+      <div class="footer_sec_2_container">
+          <div class="footer_sec_2_a">
+              <p>Copyright © 2022 Ola Electric Mobility Pvt Ltd. All Rights Reserved.</p>
+          </div>
+          <div class="footer_sec_2_b">
+              <ul>
+                  <button><li><a href="#">Notices</a></li></button>
+                  <button><li><a href="#">Privacy Policy</a></li></button>
+                  <button><li><a href="#">Terms of Service</a></li></button>
+                  <li><select name="" id="">
+                      <option value="India">India</option>
+                      <option value="AU">AU</option>
+                      <option value="UK">UK</option>
+                      <option value="NZ">NZ</option>
+                  </select></li>
+              </ul>
+
+          </div>
+      </div>
+  </section>
+  <p class="copyright">© Made with 💚 by aryan chettri</p>
+</footer>
+
+
+</body>
+</html>s

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeeksforGeeks</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <link rel="stylesheet" href="style.css">
+    <!-- Include Google reCAPTCHA script -->
+
+
+
+</head>
+<body>
+    <div class="container">
+        <div class="slider"></div>
+        <div class="btn">
+            <button class="login">Login</button>
+            <button class="signup">Signup</button>
+        </div>
+
+        <div class="form-section">
+            <!-- login form -->
+            <div class="login-box">
+                <form action="insert.php" method="post">
+                    <input type="email" class="email ele" name="email" placeholder="youremail@email.com" required>
+                    <input type="password" class="password ele" name="password" placeholder="password" required>
+                    <!-- Remember Me checkbox -->
+                    <div class="g-recaptcha" data-sitekey="6Ld8iPApAAAAAEJvxGy3LEUl6fU5jkKtPS2Xji-6"></div>
+                    <div>
+                        <input type="checkbox" name="remember_me" id="remember_me">
+                      
+                        <label for="remember_me">Remember Me</label>
+                    </div>
+                   
+                   
+                    <button type="submit" class="clkbtn" name="login">Login</button>
+                    <a href="forgot-pass.php"> Forgot Password</a>
+                </form>
+            </div>
+
+            <!-- signup form -->
+            <div class="signup-box">
+                <form action="insert.php" method="post">
+                    <input type="text" class="name ele" name="name" placeholder="Enter your name" required>
+                    <input type="email" class="email ele" name="email" placeholder="youremail@email.com" required>
+                    <input type="password" class="password ele" name="password" placeholder="password" required>
+                    <input type="password" class="password ele" name="confirm_password" placeholder="Confirm password" required>
+                    <input type="file" name="image" accept=".jpg,.png,.jpeg,.gif">
+                    
+                    <!-- reCAPTCHA widget -->
+                 
+     
+
+
+                    <button type="submit" class="clkbtn" name="signup">Signup</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+    <script>
+        // Select buttons and form sections
+        let signup = document.querySelector(".signup");
+        let login = document.querySelector(".login");
+        let slider = document.querySelector(".slider");
+        let formSection = document.querySelector(".form-section");
+
+        // Event listener for signup button
+        signup.addEventListener("click", () => {
+            slider.classList.add("moveslider");
+            formSection.classList.add("form-section-move");
+        });
+
+        // Event listener for login button
+        login.addEventListener("click", () => {
+            slider.classList.remove("moveslider");
+            formSection.classList.remove("form-section-move");
+        });
+    document.addEventListener("DOMContentLoaded", function() {
+        var passwordField = document.getElementById("password");
+            if (passwordField) {
+                passwordField.addEventListener("paste", function(e) {
+                    e.preventDefault();
+                });
+            }
+    });
+    </script>
+</body>
+</html>
